@@ -1,0 +1,71 @@
+site_name: VALM Homelab
+site_description: Documentation for my self-hosted homelab infrastructure
+site_url: https://docs.lab.valm25.com
+repo_url: https://github.com/VMarques98/homelab-docs
+repo_name: VMarques98/homelab-docs
+
+theme:
+  name: material
+  palette:
+    - scheme: default
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+    - scheme: slate
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+  features:
+    - navigation.tabs
+    - navigation.tabs.sticky
+    - navigation.top
+    - navigation.indexes
+    - search.highlight
+    - search.suggest
+    - content.code.copy
+    - toc.follow
+
+plugins:
+  - search
+
+markdown_extensions:
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.inlinehilite
+  - pymdownx.tabbed:
+      alternate_style: true
+  - attr_list
+  - md_in_html
+  - tables
+  - toc:
+      permalink: true
+
+nav:
+  - Home: index.md
+  - Architecture:
+    - architecture/index.md
+    - Overview: architecture/overview.md
+    - Hardware: architecture/hardware.md
+    - Network: architecture/network.md
+  - Services:
+    - services/index.md
+    - Media Stack: services/media.md
+    - Monitoring: services/monitoring.md
+    - Networking: services/networking.md
+    - AI: services/ai.md
+    - Automation: services/automation.md
+  - Operations:
+    - operations/index.md
+    - Deployment: operations/deployment.md
+    - Runbook: operations/runbook.md
+  - Reference:
+    - reference/index.md
+    - IP Addresses: reference/ip-addresses.md
+    - Service URLs: reference/service-urls.md

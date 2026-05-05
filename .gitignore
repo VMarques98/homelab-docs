@@ -1,0 +1,39 @@
+# MkDocs build output
+site/
+
+# Secrets and credentials
+proxmox.env
+*.env
+!*.env.example
+*.ovpn
+*.key
+
+# Budget / financial files
+*.csv
+
+# Archives
+*.zip
+*.tar.gz
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+venv/
+.venv/
+
+# Node.js
+node_modules/
+
+# macOS
+.DS_Store
+.AppleDouble
+
+# VS Code
+.vscode/
+
+# Claude
+.claude/
+
+# Logs
+*.log
