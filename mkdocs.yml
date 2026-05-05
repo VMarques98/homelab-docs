@@ -19,6 +19,7 @@ theme:
       toggle:
         icon: material/brightness-4
         name: Switch to light mode
+  custom_dir: overrides
   features:
     - navigation.tabs
     - navigation.tabs.sticky
@@ -35,7 +36,11 @@ plugins:
 markdown_extensions:
   - admonition
   - pymdownx.details
-  - pymdownx.superfences
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
   - pymdownx.highlight:
       anchor_linenums: true
   - pymdownx.inlinehilite
@@ -49,6 +54,7 @@ markdown_extensions:
 
 nav:
   - Home: index.md
+  - Homelab Overview: overview.md
   - Architecture:
     - architecture/index.md
     - Overview: architecture/overview.md
