@@ -1,6 +1,6 @@
 # VALM Homelab
 
-A production-grade self-hosted homelab running on Proxmox VE with 20+ services across media management, monitoring, AI, gaming, and home automation.
+A self-hosted Proxmox platform for media, monitoring, backups, local AI, home automation, and privacy-sensitive personal workflow automation.
 
 ---
 
@@ -12,6 +12,13 @@ A production-grade self-hosted homelab running on Proxmox VE with 20+ services a
 - **Home automation** — Home Assistant on a Pi 400 with Homebridge for HomeKit compatibility.
 - **Network-level ad blocking** — Pi-hole as the primary DNS resolver for all VLANs.
 - **Media transcoding** — Tdarr with a dedicated GPU worker handles batch transcoding jobs.
+
+### Planned personal automation
+
+- **Job Hunter + Hermes** — review-driven job discovery, tailored application preparation, tracking, and approved browser/API assistance.
+- **Receipt Ingest** — private phone uploads, original-image preservation, OCR, location and merchant details, and Excel/Quicken-oriented exports.
+
+These are roadmap items, not deployed services. See the [Personal Automation Roadmap](roadmap.md).
 
 ---
 
@@ -45,3 +52,4 @@ Internet
 - [Services](services/index.md) — every service explained
 - [Operations](operations/index.md) — deployment and runbooks
 - [Reference](reference/index.md) — service catalog and access guide
+- [Personal Automation Roadmap](roadmap.md) — planned Job Hunter and Receipt Ingest systems

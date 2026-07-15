@@ -7,3 +7,5 @@ All services running in the homelab, organized by function.
 - [Networking](networking.md) — Pi-hole, Nginx Proxy Manager, WatchYourLAN
 - [AI](ai.md) — Ollama, Open-WebUI, LiteLLM
 - [Automation](automation.md) — Home Assistant, Homebridge, Syncthing, Tdarr
+
+Personal automation projects are tracked separately in the [Personal Automation Roadmap](../roadmap.md); they are not deployed homelab services yet.
