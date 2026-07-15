@@ -20,7 +20,9 @@ Discord bot for media requests — users type `/movie` or `/tv` to search and re
 | Container | `thomst08/requestrr:latest` |
 | Host | LXC 105 (monitoring), port 4545 |
 | Web UI | http://192.168.3.21:4545 |
-| Admin | admin / Changeme123 |
+
+Administrative credentials are stored only in the live Requestrr configuration
+and the local homelab credential store; they are not recorded in documentation.
 
 ## Discord Bot
 
@@ -34,10 +36,13 @@ Discord bot for media requests — users type `/movie` or `/tv` to search and re
 
 ## Connected Services
 
-| Service | Hostname | Port | API Key |
-|---------|----------|------|---------|
-| Radarr (Movies) | 192.168.3.25 | 7878 | `aceddf6cd9a943cfb2aa6d95bee69c87` |
-| Sonarr (TV) | 192.168.3.25 | 8989 | `1341f7db6b1d41908e9357253f3f15e6` |
+| Service | Hostname | Port |
+|---------|----------|------|
+| Radarr (Movies) | 192.168.3.25 | 7878 |
+| Sonarr (TV) | 192.168.3.25 | 8989 |
+
+Requestrr authenticates to both services with API keys stored in its live
+configuration. Never copy those keys into notes, repositories, or chat output.
 
 ## Discord Commands
 

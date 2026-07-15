@@ -7,6 +7,8 @@ proxmox.env
 !*.env.example
 *.ovpn
 *.key
+credentials.local*
+.secrets/
 
 # Budget / financial files
 *.csv
