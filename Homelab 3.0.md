@@ -42,3 +42,10 @@ Self-hosted infrastructure running on Proxmox, serving media, monitoring, backup
 - [[Home Assistant]] — NFC unlock automation, UniFi Protect cameras, August lock
 - [[Requestrr]] — Discord bot for media requests (/movie, /tv)
 - [[PVE Boot Recovery]] — April 2026 incident: GPU blacklist, NIC naming, firewall fixes
+
+## Recovery and documentation source of truth
+
+- **PBS:** backup system for recoverable homelab data and service state.
+- **GitHub:** `VMarques98/homelab-docs` stores architecture, runbooks, configuration intent, and this Obsidian documentation snapshot. It does not store secrets.
+- **Credentials:** local macOS Keychain items are applied with `scripts/bootstrap-credentials.sh`; the script is dry-run by default and sends values over SSH through stdin.
+- **After every verified homelab change:** update the relevant note, run `scripts/publish-update.sh "docs: describe the verified change"`, and verify that the remote SHA matches before considering the documentation backed up.
