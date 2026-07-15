@@ -18,7 +18,7 @@ A self-hosted Proxmox platform for media, monitoring, backups, local AI, home au
 - **Job Hunter + Hermes** — review-driven job discovery, tailored application preparation, tracking, and approved browser/API assistance.
 - **Receipt Ingest** — private phone uploads, original-image preservation, OCR, location and merchant details, and Excel/Quicken-oriented exports.
 
-These are roadmap items, not deployed services. See the [Personal Automation Roadmap](roadmap.md).
+These are roadmap items, not deployed services. See the [Potential Projects](potential-projects.md) catalog and [Personal Automation Roadmap](roadmap.md).
 
 ---
 

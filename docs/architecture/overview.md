@@ -44,3 +44,20 @@ No passwords or API keys appear in configuration files or documentation. Secrets
 | DNS | Pi-hole (local resolver + ad blocker) |
 | Remote access | UniFi WifiMan Teleport |
 | Backups | Proxmox Backup Server (local NAS target) |
+
+## Operational breakdown
+
+| Concern | Documented decision |
+|---|---|
+| Placement | Proxmox is the core platform; LXCs provide efficient internal services and VMs provide stronger isolation/GPU passthrough. |
+| Ingress | Nginx Proxy Manager is the intended HTTP(S) entry point; services should not be directly exposed. |
+| Egress | The Arr Sandbox has a dedicated torrent VLAN and Gluetun kill switch. |
+| Data | Media lives on the NAS; service state belongs in guest backups and service-specific recovery notes. |
+| Secrets | Values stay in protected local stores; documentation contains only destinations and procedures. |
+| Verification | Confirm service health, network path, backup coverage, and monitoring after changes. |
+
+## Change boundaries
+
+- Treat VLAN/firewall changes, guest destruction, volume deletion, broad restarts, and credential changes as disruptive.
+- Perform read-only discovery first, back up configuration, make the narrowest change, and update the relevant note and Git-backed documentation.
+- Current capacity, IP assignments, and live service state must be verified from Proxmox/UniFi rather than inferred from this static page.

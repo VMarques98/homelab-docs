@@ -85,3 +85,28 @@ Gluetun runs as a Docker container in the Arr Sandbox LXC.
 | **Kill switch** | Enabled |
 
 All *arr services and qBittorrent use Gluetun as their network gateway. No download traffic ever uses the home IP.
+
+## Component breakdown
+
+| Component | Owns | Depends on | Healthy result |
+|---|---|---|---|
+| Sonarr | TV wanted list, searches, imports, naming | Prowlarr, qBittorrent, NAS | Episodes import into the library root. |
+| Radarr | Movie wanted list, searches, imports, naming | Prowlarr, qBittorrent, NAS | Movies import into the library root. |
+| Prowlarr | Indexer configuration and sync | Indexer access, FlareSolverr where required | Sonarr/Radarr receive usable search results. |
+| qBittorrent | Download jobs and temporary data | Gluetun, storage | Jobs transfer without direct non-VPN egress. |
+| Gluetun | VPN tunnel and kill switch | PIA credentials/configuration | Public egress is the VPN address; tunnel loss blocks traffic. |
+| Bazarr | Subtitle matching/downloads | Sonarr/Radarr libraries | Subtitles appear beside eligible media. |
+| Jellyfin/Plex | Playback and library presentation | NAS mounts, media VM, GPU where transcoding | Clients can direct-play or transcode as expected. |
+| Tdarr | Batch conversion | NAS, server, worker GPU | Test conversions complete and preserve originals until verified. |
+
+## Import safety
+
+A completed qBittorrent job is not an imported media item. Confirm the Arr application reports import success and the file exists in the configured library root before deleting download data. Leave active, incomplete, ambiguous, or failed-import jobs untouched.
+
+## Recovery and verification
+
+1. Verify the Arr Sandbox and Gluetun before starting download clients.
+2. Check Sonarr/Radarr queues and application events before retrying imports.
+3. Test a single service with `docker compose up -d --no-deps <service>`; do not use a broad compose restart casually.
+4. Verify NAS mounts, library visibility, public VPN egress, and one representative import/playback path.
+5. Back up guest/service configuration through PBS and record incidents in the relevant Obsidian note.

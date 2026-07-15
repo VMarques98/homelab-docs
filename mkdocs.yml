@@ -56,6 +56,7 @@ nav:
   - Home: index.md
   - Homelab Overview: overview.md
   - Personal Automation Roadmap: roadmap.md
+  - Potential Projects: potential-projects.md
   - Architecture:
     - architecture/index.md
     - Overview: architecture/overview.md

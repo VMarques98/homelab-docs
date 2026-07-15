@@ -54,3 +54,9 @@ All services are accessible via Nginx Proxy Manager using the homelab domain. DN
 | Syncthing | File sync (Proxmox + Mac Mini) |
 | Proxmox UI | Hypervisor management |
 | PBS | Proxmox Backup Server |
+
+## URL lifecycle
+
+For each published service, document the purpose and owning component, then verify DNS resolution, NPM routing, TLS certificate, backend health, and remote-access behavior. Do not add a URL merely because a proxy host was created; the service must also have an uptime check and a recovery note where appropriate.
+
+Private management URLs, IPs, credentials, and tokens remain in local operator references rather than this public page.

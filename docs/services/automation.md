@@ -39,3 +39,20 @@ The Tdarr server manages the job queue; a dedicated Windows PC with an RTX 5090 
 - Input: H.264 files in the media library
 - Output: H.265 (HEVC) at equivalent visual quality — ~40–60% smaller file size
 - Encoder: NVENC on RTX 5090 (hardware-accelerated)
+
+## Component breakdown
+
+| Component | Role | Dependencies | Verification |
+|---|---|---|---|
+| Home Assistant | Local device state, automations, and integrations | Pi 400, device integrations, storage | Check core health and execute a safe test automation. |
+| Homebridge | HomeKit bridge for unsupported devices | Homebridge host and plugins | Confirm accessories and plugin logs after updates. |
+| Syncthing | Peer-to-peer sync for selected working data | Paired nodes, folder permissions, conflict handling | Confirm both nodes are connected and no unresolved conflicts exist. |
+| Tdarr | Batch media transformation | NAS paths, server, worker GPU | Run a small test job and verify output before bulk changes. |
+
+## Automation safety
+
+Automations should be idempotent, observable, and reversible. Document trigger, action, dependency, rate limit, notification, and manual recovery. Do not sync secrets or financial data through a general-purpose folder without an explicit encrypted-storage design.
+
+## Planned integrations
+
+The [Potential Projects](../potential-projects.md) page records future Hermes, receipt, job-application, and workflow ideas. They remain separate from deployed services until their data boundaries, approval gates, and backup paths are implemented.

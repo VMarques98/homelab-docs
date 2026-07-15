@@ -90,3 +90,18 @@ Configured as the primary DNS resolver for all VLANs via UniFi DHCP.
 | Shares | Movies, TV, music, books |
 
 Hosts all media files. Volumes are mounted into the LXCs and VMs that need storage access.
+
+## Node-by-node operating breakdown
+
+| Node | Depends on | Primary data or workload | Failure impact | Recovery/check |
+|---|---|---|---|---|
+| `pve` | UniFi network, local storage, guest configuration | Proxmox guests and host networking | Core services unavailable | Verify boot, bridges, guest inventory, storage, and PBS connectivity. |
+| `storm` | LAN reachability and Tdarr server | GPU transcoding jobs | Transcoding queue pauses; originals remain available | Verify worker registration and run a small test job. |
+| `mac-llm` | LAN and local disk | Ollama models, Open-WebUI, Syncthing | Local AI and sync unavailable | Check model service, UI, and sync folder state. |
+| `pi-home` | LAN and Home Assistant storage | Home automation and HomeKit bridge | Automations/accessories unavailable | Check Home Assistant health and Homebridge plugin status. |
+| `pi-dns` | Network power and Pi-hole state | DNS and filtering | Name resolution degrades across VLANs | Check DNS resolution from each zone and UniFi DHCP assignments. |
+| NAS | LAN, storage health, mounts | Media and shared data | Media imports/streaming and some backups fail | Check NAS health, share access, mount state, and recent PBS jobs. |
+
+## Inventory gaps
+
+The page intentionally omits credentials and volatile values. Confirm exact RAM, storage capacity, guest IDs, mount paths, switch ports, and backup schedules from live inventory before using this page as a change plan.

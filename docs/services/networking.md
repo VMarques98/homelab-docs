@@ -41,3 +41,21 @@ Key configuration:
 - Media/Torrent VLAN tagged for Arr sandbox VPN egress
 - DHCP servers on each VLAN point to Pi-hole as DNS
 - WifiMan Teleport enabled for remote LAN access without a separate VPN client
+
+## Component breakdown
+
+| Component | Responsibility | Dependencies | Verification |
+|---|---|---|---|
+| Pi-hole | DNS resolution, filtering, local records | Pi-hole host, UniFi DHCP, upstream resolver | Resolve internal and external names from each zone. |
+| Nginx Proxy Manager | TLS termination and reverse proxy | DNS, target service, certificate provider | Test host routing, certificate validity, and backend health. |
+| WatchYourLAN | Device discovery | LAN visibility and storage | Compare discovered clients with UniFi during an audit. |
+| UniFi | Switching, VLANs, DHCP, firewall, remote access | Router, switch, controller state | Review clients, VLAN tagging, DHCP, policy hits, and Teleport session. |
+
+## Adding a service safely
+
+1. Assign its placement and intended network zone.
+2. Confirm backend bind address and port from live service configuration.
+3. Add the narrowest DNS/proxy/firewall rules required.
+4. Add TLS, Uptime Kuma, monitoring, and Homarr entries where appropriate.
+5. Test local, remote, denied, and failure paths.
+6. Update the service URL/IP reference without committing private values.

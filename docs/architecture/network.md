@@ -56,3 +56,19 @@ UniFi WifiMan **Teleport** provides secure remote access to the LAN. No separate
 ## NAS Connectivity
 
 The NAS lives on the default LAN. Proxmox mounts its SMB shares and bind-mounts storage volumes into the LXCs and VMs that need media access.
+
+## Traffic-path breakdown
+
+| Path | Expected route | Verification |
+|---|---|---|
+| Client → published service | Client → Pi-hole DNS → NPM → target service | Resolve the hostname locally and test the proxy endpoint. |
+| Arr download → Internet | Arr service → Gluetun → PIA tunnel → Internet | Check the public egress IP from inside qBittorrent/Gluetun. |
+| Media service → library | Jellyfin/Plex/Tdarr → mounted NAS share | Check the mount and sample-read the exact media path. |
+| Remote operator → homelab | MacBook → UniFi Teleport → internal DNS/services | Verify Teleport session, DNS resolution, and least-privilege access. |
+| Metrics → dashboards | Exporters → Prometheus → Grafana/Uptime Kuma | Check scrape targets, dashboard freshness, and alerts. |
+
+## Firewall and dependency notes
+
+The current VLAN model is the intended isolation boundary, but the exact policy set must be verified in UniFi before changes. Do not assume a VLAN is secure because it exists: test allowed management, DNS, proxy, NAS, monitoring, and VPN paths and confirm denied direct torrent egress.
+
+A network change is complete only when DNS, proxy access, VPN egress, NAS access, monitoring, and remote access are each tested. Record exceptions and accepted risks in the firewall notes.

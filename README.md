@@ -31,6 +31,7 @@ These are planned capabilities, not currently deployed services. See [Personal A
 - [Services](docs/services/index.md) — service catalog
 - [Operations](docs/operations/index.md) — deployment and runbooks
 - [Reference](docs/reference/index.md) — addresses and service URLs
+- [Potential projects](docs/potential-projects.md) — project catalog with blurbs and first milestones
 - [Personal automation roadmap](docs/roadmap.md) — job hunter and receipt-ingest design
 
 ## Safe contribution workflow

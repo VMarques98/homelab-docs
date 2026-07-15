@@ -106,3 +106,21 @@ If Syncthing creates `.sync-conflict` files:
 3. Add a DNS record in Pi-hole if needed
 4. Add a tile in Homarr
 5. Add an uptime check in Uptime Kuma
+
+## Incident workflow
+
+1. Define the symptom and affected boundary: client, DNS, proxy, service, storage, or upstream.
+2. Capture read-only evidence: status, logs, queue state, mounts, network path, and recent changes.
+3. Stabilize narrowly; avoid broad restarts or deletion while ownership is unclear.
+4. Repair through the supported application/API workflow.
+5. Verify the result from the service and its dependent path.
+6. Record the cause, commands, safeguards, and follow-up in the relevant Obsidian note.
+7. Run the secret scan and publish the documentation; verify the remote commit.
+
+## Common verification bundles
+
+- **Arr import:** queue state → application event → library file exists → playback/library scan.
+- **VPN:** Gluetun health → public egress IP → kill-switch behavior → downloader connectivity.
+- **Jellyfin playback:** playback mode → FFmpeg state → exact media metadata → client/router/NAS path samples.
+- **NAS issue:** mount state → share health → exact-file read → recent backup status.
+- **Monitoring outage:** target health → recent samples → dashboard freshness → notification delivery.

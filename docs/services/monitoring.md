@@ -59,3 +59,24 @@ Exposes per-container resource metrics for all Docker containers.
 ### PVE Exporter
 
 Connects to the Proxmox API and exposes VM and LXC resource metrics for Prometheus.
+
+## Component breakdown
+
+| Component | Signal | Used for | Failure symptom |
+|---|---|---|---|
+| Prometheus | Time-series scrapes | Historical metrics and alert queries | Dashboards age and scrape targets turn down. |
+| Grafana | Queries and dashboards | Human investigation and trends | Metrics may exist but are hard to visualize. |
+| Uptime Kuma | HTTP/TCP checks | Availability alerts and recovery notifications | Service outage may not generate an alert. |
+| Homarr | Service links and integrations | Operator landing page | Navigation/status tiles become stale. |
+| Netdata | Host/process telemetry | Short-lived CPU, memory, and I/O diagnosis | Detailed process context is unavailable. |
+| Node Exporter | Host metrics | CPU, RAM, disk, network | Host-level dashboards lose detail. |
+| cAdvisor | Container metrics | Docker resource attribution | Per-container usage disappears. |
+| PVE Exporter | Proxmox API metrics | VM/LXC health and capacity | Guest metrics stop updating. |
+
+## Alerting contract
+
+A monitor is useful only if it identifies the service, failure boundary, and recovery action. When adding a service, add its uptime check, required scrape target/dashboard, and an owner/runbook link. Discord notifications are an alert channel, not proof that a service is healthy.
+
+## Verification and retention
+
+Check Prometheus target health, recent samples, Grafana dashboard freshness, Uptime Kuma notification delivery, and disk usage for metric retention after monitoring changes. Keep credentials for the Proxmox exporter outside the repository.

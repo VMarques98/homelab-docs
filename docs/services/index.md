@@ -8,4 +8,8 @@ All services running in the homelab, organized by function.
 - [AI](ai.md) — Ollama, Open-WebUI, LiteLLM
 - [Automation](automation.md) — Home Assistant, Homebridge, Syncthing, Tdarr
 
-Personal automation projects are tracked separately in the [Personal Automation Roadmap](../roadmap.md); they are not deployed homelab services yet.
+## Service-page contract
+
+Every service page identifies what each component owns, its dependencies, expected healthy result, verification path, failure boundary, and recovery caution. Live credentials, volatile addresses, and unverified deployment assumptions remain outside this public documentation.
+
+Personal automation projects are tracked separately in the [Potential Projects](../potential-projects.md) catalog and [Personal Automation Roadmap](../roadmap.md); they are not deployed homelab services yet.

@@ -23,3 +23,14 @@ The homelab uses three network zones:
 ## Reserved Addresses
 
 The NAS has a permanently reserved static IP on the default LAN. Do not reassign it — all media mount points on the Proxmox host depend on it.
+
+## Address ownership and verification
+
+| Record type | Source of truth | Check when |
+|---|---|---|
+| DHCP/static assignment | UniFi controller | A host moves, is replaced, or cannot be reached. |
+| Local hostname | Pi-hole local DNS | A proxy URL fails or a new service is added. |
+| Guest interface/bridge | Proxmox network inventory | A VM/LXC loses connectivity or VLAN placement changes. |
+| NAS mount endpoint | Proxmox mount configuration and NAS | Media import, playback, or backup access fails. |
+
+Never copy a private address map into this public documentation page. Record only the zone, purpose, and verification source.
